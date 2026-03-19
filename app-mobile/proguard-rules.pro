@@ -1,0 +1,3 @@
+-keep class com.mastrek.grantclub.mobile.data.** { *; }
+-keepattributes Signature
+-keepattributes *Annotation*

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Grant Club IPTV</string>
+    <string name="activation_go_to">Visit grant-club.com/activate</string>
+    <string name="no_channels">No channels. Configure your playlist.</string>
+    <string name="player_error">Unable to play this channel.</string>
+</resources>
