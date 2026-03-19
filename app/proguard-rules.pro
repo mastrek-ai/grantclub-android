@@ -1,0 +1,3 @@
+-keep class com.mastrek.grantclub.data.** { *; }
+-keepattributes Signature
+-keepattributes *Annotation*
