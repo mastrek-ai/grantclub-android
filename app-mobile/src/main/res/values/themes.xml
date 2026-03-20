@@ -1,18 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="Theme.GrantClubMobile" parent="Theme.Material3.Dark.NoActionBar">
+    <style name="Theme.GrantClubMobile" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="colorPrimary">@color/accent</item>
         <item name="colorPrimaryVariant">@color/background_dark</item>
         <item name="colorOnPrimary">@color/white</item>
         <item name="android:windowBackground">@color/background</item>
-        <item name="android:statusBarColor">@color/background_dark</item>
-        <item name="android:navigationBarColor">@color/background_dark</item>
     </style>
 
-    <style name="Theme.GrantClubMobile.Player" parent="Theme.Material3.Dark.NoActionBar">
+    <style name="Theme.GrantClubMobile.Player" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="android:windowBackground">@android:color/black</item>
         <item name="android:windowFullscreen">true</item>
-        <item name="android:windowKeepScreenOn">true</item>
-        <item name="android:statusBarColor">@android:color/transparent</item>
     </style>
 </resources>
