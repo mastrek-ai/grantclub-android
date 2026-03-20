@@ -8,6 +8,7 @@ data class Channel(
 )
 
 object M3uParser {
+
     fun parse(content: String): List<Channel> {
         val channels = mutableListOf<Channel>()
         val lines    = content.lines()
@@ -15,13 +16,15 @@ object M3uParser {
         while (i < lines.size) {
             val line = lines[i].trim()
             if (line.startsWith("#EXTINF")) {
-                val name    = extractAttr(line, "tvg-name") ?: line.substringAfterLast(",").trim()
+                val name    = extractAttr(line, "tvg-name")
+                    ?: line.substringAfterLast(",").trim()
                 val logoUrl = extractAttr(line, "tvg-logo")
                 val group   = extractAttr(line, "group-title")
                 val url     = lines.getOrNull(i + 1)?.trim() ?: ""
                 if (url.isNotEmpty() && !url.startsWith("#")) {
                     channels.add(Channel(UUID.randomUUID().toString(), name, url, logoUrl, group))
-                    i += 2; continue
+                    i += 2
+                    continue
                 }
             }
             i++

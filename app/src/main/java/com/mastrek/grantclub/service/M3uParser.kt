@@ -9,7 +9,6 @@ object M3uParser {
         val channels = mutableListOf<Channel>()
         val lines    = content.lines()
         var i        = 0
-
         while (i < lines.size) {
             val line = lines[i].trim()
             if (line.startsWith("#EXTINF")) {
@@ -17,9 +16,7 @@ object M3uParser {
                     ?: line.substringAfterLast(",").trim()
                 val logoUrl = extractAttr(line, "tvg-logo")
                 val group   = extractAttr(line, "group-title")
-
-                // Ligne suivante = URL stream
-                val url = lines.getOrNull(i + 1)?.trim() ?: ""
+                val url     = lines.getOrNull(i + 1)?.trim() ?: ""
                 if (url.isNotEmpty() && !url.startsWith("#")) {
                     channels.add(Channel(
                         id      = UUID.randomUUID().toString(),
@@ -38,7 +35,7 @@ object M3uParser {
     }
 
     private fun extractAttr(line: String, attr: String): String? {
-        val pattern = Regex("""$attr="([^"]*)"")
+        val pattern = Regex("""$attr="([^"]*)"""")
         return pattern.find(line)?.groupValues?.get(1)?.takeIf { it.isNotEmpty() }
     }
 }
