@@ -5,6 +5,7 @@ import android.content.res.Configuration
 import android.os.Build
 import android.os.Bundle
 import android.util.Rational
+import android.view.View
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.media3.common.MediaItem
@@ -27,7 +28,7 @@ class PlayerActivity : AppCompatActivity() {
         val name = intent.getStringExtra("channel_name") ?: ""
 
         binding.tvChannelName.text = name
-        binding.btnPip.setOnClickListener { enterPip() }
+        binding.btnPip.setOnClickListener   { enterPip() }
         binding.btnClose.setOnClickListener { finish() }
 
         initPlayer(url)
@@ -41,8 +42,8 @@ class PlayerActivity : AppCompatActivity() {
             exo.prepare()
             exo.addListener(object : Player.Listener {
                 override fun onPlaybackStateChanged(state: Int) {
-                    binding.progressBar.visibility = if (state == Player.STATE_BUFFERING)
-                        android.view.View.VISIBLE else android.view.View.GONE
+                    binding.progressBar.visibility =
+                        if (state == Player.STATE_BUFFERING) View.VISIBLE else View.GONE
                 }
             })
         }
@@ -59,9 +60,10 @@ class PlayerActivity : AppCompatActivity() {
 
     override fun onPictureInPictureModeChanged(isInPip: Boolean, config: Configuration) {
         super.onPictureInPictureModeChanged(isInPip, config)
-        binding.btnPip.visibility   = if (isInPip) android.view.View.GONE else android.view.View.VISIBLE
-        binding.btnClose.visibility = if (isInPip) android.view.View.GONE else android.view.View.VISIBLE
-        binding.tvChannelName.visibility = if (isInPip) android.view.View.GONE else android.view.View.VISIBLE
+        val vis = if (isInPip) View.GONE else View.VISIBLE
+        binding.btnPip.visibility        = vis
+        binding.btnClose.visibility      = vis
+        binding.tvChannelName.visibility = vis
     }
 
     override fun onUserLeaveHint() {
