@@ -83,7 +83,7 @@ jobs:
 
       - name: Build Mobile release APK
         run: |
-          ./gradlew :app-mobile:assembleRelease \
+          ./gradlew :app-mobile:assembleRelease --info \
             -Pandroid.injected.signing.store.file=$PWD/app-mobile/mastrek-release.keystore \
             -Pandroid.injected.signing.store.password="${{ secrets.KEYSTORE_PASSWORD }}" \
             -Pandroid.injected.signing.key.alias="${{ secrets.KEY_ALIAS }}" \
